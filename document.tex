@@ -1,0 +1,273 @@
+% @see : https://coopmaths.fr/alea/?uuid=74939&id=2N20-6&alea=9IAc&uuid=c3c84&id=2N20-7&alea=lN6x&uuid=3ec5c&id=2N20-8&alea=uvkp&uuid=c04cc&id=2N20-4&alea=3w1u&v=latex
+\documentclass[a4paper,11pt,fleqn]{article}
+\usepackage{ProfMaquette}
+\setKVdefault[Boulot]{CorrigeFin=true}
+\usepackage{etoolbox}
+\newbool{dys}
+\setbool{dys}{true}          
+\ifbool{dys}{
+% POLICE DYS
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Schola}
+%\setmainfont{OpenDyslexic}[Scale=1.0]
+\setmathfont{TeX Gyre Schola Math}
+\usepackage[fontsize=14]{scrextend}
+\usepackage{setspace}
+\setstretch{1.7}
+}{
+% POLICE STANDARD
+\usepackage{fontenc}
+\usepackage[scaled=1]{helvet}
+\usepackage[fontsize=12]{scrextend}
+}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[luatex]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{0pt}
+\setlength{\headheight}{18pt}
+\fancyhead[R]{\href{https://coopmaths.fr/alea}{Mathaléa}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{%
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south east] at ($(current page.south east)+(-2,0.25cm)$) {\scriptsize {\bfseries \href{https://coopmaths.fr/}{Coopmaths.fr} -- \href{http://creativecommons.fr/licences/}{CC-BY-SA}}};
+\end{tikzpicture}
+}
+\fancyhead[L]{
+\begin{tikzpicture}[y=0.8, x=0.8, yscale=-0.04, xscale=0.04,remember picture, overlay,fill=orange!50,transform canvas={xshift=-1cm,yshift=1cm}]
+%%%% Arc supérieur gauche%%%%
+\path[fill](523,1424)..controls(474,1413)and(404,1372)..(362,1333)..controls(322,1295)and(313,1272)..(331,1254)..controls(348,1236)and(369,1245)..(410,1283)..controls(458,1328)and(517,1356)..(575,1362)..controls(635,1368)and(646,1375)..(643,1404)..controls(641,1428)and(641,1428)..(596,1430)..controls(571,1431)and(538,1428)..(523,1424)--cycle;
+%%%% Dé face supérieur%%%%
+\path[fill](512,1272)..controls(490,1260)and(195,878)..(195,861)..controls(195,854)and(198,846)..(202,843)..controls(210,838)and(677,772)..(707,772)..controls(720,772)and(737,781)..(753,796)..controls(792,833)and(1057,1179)..(1057,1193)..controls(1057,1200)and(1053,1209)..(1048,1212)..controls(1038,1220)and(590,1283)..(551,1282)..controls(539,1282)and(521,1278)..(512,1272)--cycle;
+%%%% Dé faces gauche et droite%%%%
+\path[fill](1061,1167)..controls(1050,1158)and(978,1068)..(900,967)..controls(792,829)and(756,777)..(753,756)--(748,729)--(724,745)..controls(704,759)and(660,767)..(456,794)..controls(322,813)and(207,825)..(200,822)..controls(193,820)and(187,812)..(187,804)..controls(188,797)and(229,688)..(279,563)..controls(349,390)and(376,331)..(391,320)..controls(406,309)and(462,299)..(649,273)..controls(780,254)and(897,240)..(907,241)..controls(918,243)and(927,249)..(928,256)..controls(930,264)and(912,315)..(889,372)..controls(866,429)and(848,476)..(849,477)..controls(851,479)and(872,432)..(897,373)..controls(936,276)and(942,266)..(960,266)..controls(975,266)and(999,292)..(1089,408)..controls(1281,654)and(1290,666)..(1290,691)..controls(1290,720)and(1104,1175)..(1090,1180)..controls(1085,1182)and (1071,1176)..(1061,1167)--cycle;
+%%%% Arc inférieur bas%%%%
+\path[fill](1329,861)..controls(1316,848)and(1317,844)..(1339,788)..controls(1364,726)and(1367,654)..(1347,591)..controls(1330,539)and(1338,522)..(1375,526)..controls(1395,528)and(1400,533)..(1412,566)..controls(1432,624)and(1426,760)..(1401,821)..controls(1386,861)and(1380,866)..(1361,868)..controls(1348,870)and(1334,866)..(1329,861)--cycle;
+%%%% Arc inférieur gauche%%%%
+\path[fill](196,373)..controls(181,358)and(186,335)..(213,294)..controls(252,237)and(304,190)..(363,161)..controls(435,124)and(472,127)..(472,170)..controls(472,183)and(462,192)..(414,213)..controls(350,243)and(303,283)..(264,343)..controls(239,383)and(216,393)..(196,373)--cycle;
+\end{tikzpicture}
+}
+%%%%%% Style Fiche
+\tcbset{%
+  userfiche/.style={%
+    %move upwards=-1cm,colback=red!75%
+    top=5pt, left=5pt, right=5pt, colback=red!5!white%
+  }%
+}%
+\tcbset{%
+  userfichecor/.style={%
+    %spread upwards=-1cm,colback=gray!5%
+    top=5pt, left=5pt, right=5pt, colback=red!5!white%
+  }%
+}%
+
+% Parametrages
+\hypersetup{
+    colorlinks=true,% On active la couleur pour les liens. Couleur par défaut rouge
+    linkcolor=blue,% On définit la couleur pour les liens internes
+    % filecolor=magenta,% On définit la couleur pour les liens vers les fichiers locaux      
+    urlcolor=blue,% On définit la couleur pour les liens vers des sites web
+    % pdftitle={Puissance Quatre},% On définit un titre pour le document pdf
+    % pdfpagemode=FullScreen,% On fixe l'affichage par défaut à plein écran
+}
+\usepackage{qrcode}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage[french]{babel}
+\setlength{\parindent}{0cm}
+% loadPackagesFromContent
+\usepackage{multicol}
+\usepackage[tikz]{bclogo}
+\definecolor{nombres}{cmyk}{0,.8,.95,0}
+\usepackage{needspace}
+\newcommand{\e}{\text{e}}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\begin{document}
+\begin{Maquette}[Fiche]{Niveau=centrevectoriel@gmail.com / enseign@proton.me,Classe=Niveau :  lycée seconde,Date=   ,Theme=Exercices de mathématiques  sur l'arithmétique }
+
+% @see : https://coopmaths.fr/alea?uuid=74939&id=2N20-6&n=2&d=10&s=true&alea=9IAc&cd=1&cols=1
+\needspace{10\baselineskip}
+\begin{exercice}
+
+Sans la calculatrice, compter/lister les diviseurs d'un entier à partir de sa décomposition en facteurs premiers.
+\begin{enumerate}[itemsep=1em]
+	\item La décomposition en facteurs premiers de $1\,575$ est : $3^{2}\times 5^{2}\times 7$. \\\textbf {a.}  Compléter le tableau ci-dessous.$\medskip$\\$\renewcommand{\arraystretch}{1}
+\begin{array}{|c|c|c|c|}
+\hline
+\cellcolor{lightgray} \times & \cellcolor{lightgray} \phantom{plusLarge}3^{0}\phantom{plusLarge} & \cellcolor{lightgray} \phantom{plusLarge}3^{1}\phantom{plusLarge} & \cellcolor{lightgray} \phantom{plusLarge}3^{2}\phantom{plusLarge}\\
+\hline
+\cellcolor{lightgray} 5^{0}\times7^{0} &  &  & \\
+\hline
+\cellcolor{lightgray} 5^{0}\times7^{1} &  &  & \\
+\hline
+\cellcolor{lightgray} 5^{1}\times7^{0} &  &  & \\
+\hline
+\cellcolor{lightgray} 5^{1}\times7^{1} &  &  & \\
+\hline
+\cellcolor{lightgray} 5^{2}\times7^{0} &  &  & \\
+\hline
+\cellcolor{lightgray} 5^{2}\times7^{1} &  &  & \\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1}$
+$\medskip$\\\textbf {b.}  En déduire le nombre de diviseurs de $1\,575$.\\\textbf {c.}  Enfin, dresser la liste des diviseurs de $1\,575$.\\
+	\item La décomposition en facteurs premiers de $7\,007$ est : $7^{2}\times 11\times 13$. \\\textbf {a.}  Compléter le tableau ci-dessous.$\medskip$\\$\renewcommand{\arraystretch}{1}
+\begin{array}{|c|c|c|c|}
+\hline
+\cellcolor{lightgray} \times & \cellcolor{lightgray} \phantom{plusLarge}7^{0}\phantom{plusLarge} & \cellcolor{lightgray} \phantom{plusLarge}7^{1}\phantom{plusLarge} & \cellcolor{lightgray} \phantom{plusLarge}7^{2}\phantom{plusLarge}\\
+\hline
+\cellcolor{lightgray} 11^{0}\times13^{0} &  &  & \\
+\hline
+\cellcolor{lightgray} 11^{0}\times13^{1} &  &  & \\
+\hline
+\cellcolor{lightgray} 11^{1}\times13^{0} &  &  & \\
+\hline
+\cellcolor{lightgray} 11^{1}\times13^{1} &  &  & \\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1}$
+$\medskip$\\\textbf {b.}  En déduire le nombre de diviseurs de $7\,007$.\\\textbf {c.}  Enfin, dresser la liste des diviseurs de $7\,007$.\\
+\end{enumerate}
+\end{exercice}
+
+\begin{Solution}
+\begin{enumerate}[itemsep=1em]
+	\item Avec la décomposition en facteurs premiers de $1\,575$ qui est : $3^{2}\times 5^{2}\times 7$ : \\\textbf {a.}  Le tableau donne :\\$\renewcommand{\arraystretch}{1}
+\begin{array}{|c|c|c|c|}
+\hline
+\cellcolor{lightgray} \times & \cellcolor{lightgray} 3^{0} & \cellcolor{lightgray} 3^{1} & \cellcolor{lightgray} 3^{2}\\
+\hline
+\cellcolor{lightgray} 5^{0}\times7^{0} & 5^{0}\times7^{0}\times3^{0}={\color[HTML]{f15929}\boldsymbol{1}} & 5^{0}\times7^{0}\times3^{1}={\color[HTML]{f15929}\boldsymbol{3}} & 5^{0}\times7^{0}\times3^{2}={\color[HTML]{f15929}\boldsymbol{9}}\\
+\hline
+\cellcolor{lightgray} 5^{0}\times7^{1} & 5^{0}\times7^{1}\times3^{0}={\color[HTML]{f15929}\boldsymbol{7}} & 5^{0}\times7^{1}\times3^{1}={\color[HTML]{f15929}\boldsymbol{21}} & 5^{0}\times7^{1}\times3^{2}={\color[HTML]{f15929}\boldsymbol{63}}\\
+\hline
+\cellcolor{lightgray} 5^{1}\times7^{0} & 5^{1}\times7^{0}\times3^{0}={\color[HTML]{f15929}\boldsymbol{5}} & 5^{1}\times7^{0}\times3^{1}={\color[HTML]{f15929}\boldsymbol{15}} & 5^{1}\times7^{0}\times3^{2}={\color[HTML]{f15929}\boldsymbol{45}}\\
+\hline
+\cellcolor{lightgray} 5^{1}\times7^{1} & 5^{1}\times7^{1}\times3^{0}={\color[HTML]{f15929}\boldsymbol{35}} & 5^{1}\times7^{1}\times3^{1}={\color[HTML]{f15929}\boldsymbol{105}} & 5^{1}\times7^{1}\times3^{2}={\color[HTML]{f15929}\boldsymbol{315}}\\
+\hline
+\cellcolor{lightgray} 5^{2}\times7^{0} & 5^{2}\times7^{0}\times3^{0}={\color[HTML]{f15929}\boldsymbol{25}} & 5^{2}\times7^{0}\times3^{1}={\color[HTML]{f15929}\boldsymbol{75}} & 5^{2}\times7^{0}\times3^{2}={\color[HTML]{f15929}\boldsymbol{225}}\\
+\hline
+\cellcolor{lightgray} 5^{2}\times7^{1} & 5^{2}\times7^{1}\times3^{0}={\color[HTML]{f15929}\boldsymbol{175}} & 5^{2}\times7^{1}\times3^{1}={\color[HTML]{f15929}\boldsymbol{525}} & 5^{2}\times7^{1}\times3^{2}={\color[HTML]{f15929}\boldsymbol{1\,575}}\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1}$
+\\\textbf {b.}  $1\,575$ a donc $(2+1)\times(2+1)\times(1+1) = 3\times3\times2 = 18$ diviseurs.\\En effet, dans la décomposition apparaît :  \\ - Le facteur premier $3$ avec la multiplicité $2$, le facteur $3$ apparaît donc sous les formes : $3^{0}$ ou $3^{1}$ ou $3^{2}$ d'où le facteur $(2+1)$. \\ - Le facteur premier $5$ avec la multiplicité $2$, le facteur $5$ apparaît donc sous les formes : $5^{0}$ ou $5^{1}$ ou $5^{2}$ d'où le facteur $(2+1)$. \\ - Le facteur premier $7$ avec la multiplicité $1$, le facteur $7$ apparaît donc sous les formes : $7^{0}$ ou $7^{1}$ d'où le facteur $(1+1)$.\\\textbf {c.}  Enfin, voici la liste des $18$ diviseurs de $1\,575$ issus du tableau ci-dessus : $1\text{ ; }3\text{ ; }5\text{ ; }7\text{ ; }9\text{ ; }15\text{ ; }21\text{ ; }25\text{ ; }35\text{ ; }45\text{ ; }63\text{ ; }75\text{ ; }105\text{ ; }175\text{ ; }225\text{ ; }315\text{ ; }525\text{ ; }1\,575.$
+	\item Avec la décomposition en facteurs premiers de $7\,007$ qui est : $7^{2}\times 11\times 13$ : \\\textbf {a.}  Le tableau donne :\\$\renewcommand{\arraystretch}{1}
+\begin{array}{|c|c|c|c|}
+\hline
+\cellcolor{lightgray} \times & \cellcolor{lightgray} 7^{0} & \cellcolor{lightgray} 7^{1} & \cellcolor{lightgray} 7^{2}\\
+\hline
+\cellcolor{lightgray} 11^{0}\times13^{0} & 11^{0}\times13^{0}\times7^{0}={\color[HTML]{f15929}\boldsymbol{1}} & 11^{0}\times13^{0}\times7^{1}={\color[HTML]{f15929}\boldsymbol{7}} & 11^{0}\times13^{0}\times7^{2}={\color[HTML]{f15929}\boldsymbol{49}}\\
+\hline
+\cellcolor{lightgray} 11^{0}\times13^{1} & 11^{0}\times13^{1}\times7^{0}={\color[HTML]{f15929}\boldsymbol{13}} & 11^{0}\times13^{1}\times7^{1}={\color[HTML]{f15929}\boldsymbol{91}} & 11^{0}\times13^{1}\times7^{2}={\color[HTML]{f15929}\boldsymbol{637}}\\
+\hline
+\cellcolor{lightgray} 11^{1}\times13^{0} & 11^{1}\times13^{0}\times7^{0}={\color[HTML]{f15929}\boldsymbol{11}} & 11^{1}\times13^{0}\times7^{1}={\color[HTML]{f15929}\boldsymbol{77}} & 11^{1}\times13^{0}\times7^{2}={\color[HTML]{f15929}\boldsymbol{539}}\\
+\hline
+\cellcolor{lightgray} 11^{1}\times13^{1} & 11^{1}\times13^{1}\times7^{0}={\color[HTML]{f15929}\boldsymbol{143}} & 11^{1}\times13^{1}\times7^{1}={\color[HTML]{f15929}\boldsymbol{1\,001}} & 11^{1}\times13^{1}\times7^{2}={\color[HTML]{f15929}\boldsymbol{7\,007}}\\
+\hline
+\end{array}
+\renewcommand{\arraystretch}{1}$
+\\\textbf {b.}  $7\,007$ a donc $(2+1)\times(1+1)\times(1+1) = 3\times2\times2 = 12$ diviseurs.\\En effet, dans la décomposition apparaît :  \\ - Le facteur premier $7$ avec la multiplicité $2$, le facteur $7$ apparaît donc sous les formes : $7^{0}$ ou $7^{1}$ ou $7^{2}$ d'où le facteur $(2+1)$. \\ - Le facteur premier $11$ avec la multiplicité $1$, le facteur $11$ apparaît donc sous les formes : $11^{0}$ ou $11^{1}$ d'où le facteur $(1+1)$. \\ - Le facteur premier $13$ avec la multiplicité $1$, le facteur $13$ apparaît donc sous les formes : $13^{0}$ ou $13^{1}$ d'où le facteur $(1+1)$.\\\textbf {c.}  Enfin, voici la liste des $12$ diviseurs de $7\,007$ issus du tableau ci-dessus : $1\text{ ; }7\text{ ; }11\text{ ; }13\text{ ; }49\text{ ; }77\text{ ; }91\text{ ; }143\text{ ; }539\text{ ; }637\text{ ; }1\,001\text{ ; }7\,007.$
+\end{enumerate}
+\end{Solution}
+
+% @see : https://coopmaths.fr/alea?uuid=c3c84&id=2N20-7&n=4&d=10&s=true&alea=lN6x&cd=1&cols=1
+\needspace{10\baselineskip}
+\begin{exercice}
+
+
+\begin{enumerate}[itemsep=2em]
+	\item La roue n$^\circ$1 possède $13$ dents et la roue n$^\circ$2 a $7$ dents.\\\textbf {a.}  Écrire la liste des multiples de $13$ et de $7$ jusqu'à trouver un multiple commun.\\Justifier que 13 et 7 sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus petit multiple commun} \\ Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}?\\\textbf {b.}  En déduire le nombre de tours de chaque roue avant le retour à leur position initiale.
+	\item La roue n$^\circ$1 possède $86$ dents et la roue n$^\circ$2 a $91$ dents.\\\textbf {a.}  Décomposer $86$ et $91$ en produit de facteurs premiers.\\Justifier que 86 et 91 sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Trois définitions équivalentes au choix} \\- Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$. \\-  Soient deux nombres entiers a et b, lorsque le plus grang diviseur commun à $a$ et $b$ vaut $1$ \\ ( $pgcd(a,b)=1$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$. \\-  Soient deux nombres entiers a et b, lorsque $a$ et $b$ n'ont pas d'autre diviseur commun que $1$, on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}?\\\textbf {b.}  En déduire le nombre de tours de chaque roue avant le retour à leur position initiale.
+	\item La roue n$^\circ$2 a maintenant $20$ dents. Déterminer le nombre de dents de la roue n$^\circ$1 qui ferait $2$  tours  pendant que la roue n$^\circ$2 en fait $1$.
+	\item La roue n$^\circ$1 possède $8$ dents et la roue n$^\circ$2 a $13$ dents.\\\textbf {a.}  Écrire la liste des multiples de $8$ et de $13$ jusqu'à trouver un multiple commun.\\Justifier que 8 et 13 sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus petit multiple commun} \\ Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}?\\\textbf {b.}  En déduire le nombre de tours de chaque roue avant le retour à leur position initiale.
+\end{enumerate}
+\end{exercice}
+
+\begin{Solution}
+\begin{enumerate}[itemsep=1em]
+	\item \textbf {a.}  Liste des premiers multiples de $13$ : \\$1\times13 = 13$ ; $2\times13 = 26$ ; $3\times13 = 39$ ; $4\times13 = 52$ ; $5\times13 = 65$ ; \\$6\times13 = 78$ ; $7\times13 = {\color[HTML]{f15929}\boldsymbol{91}}$ ; $8\times13 = 104$ ; $9\times13 = 117$ ; $10\times13 = 130$ ; \\$\ldots$ \\ Liste des premiers multiples de $7$ : \\$1\times7 = 7$ ; $2\times7 = 14$ ; $3\times7 = 21$ ; $4\times7 = 28$ ; $5\times7 = 35$ ; \\$6\times7 = 42$ ; $7\times7 = 49$ ; $8\times7 = 56$ ; $9\times7 = 63$ ; $10\times7 = 70$ ; \\$11\times7 = 77$ ; $12\times7 = 84$ ; $13\times7 = {\color[HTML]{f15929}\boldsymbol{91}}$ ; $14\times7 = 98$ ; $15\times7 = 105$ ; \\$\ldots$ \\$ppcm(13;7)=13\times7$ donc $13$ et $7$ sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus petit multiple commun} \\ Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}.\\\textbf {b.}  Le plus petit multiple commun à $13$ et $7$ vaut donc $91$.\\
+            Il suffit donc que chaque roue tourne de $91$ dents pour faire un nombre entier de tours et ainsi revenir dans sa position initiale.\\
+            En effet, chaque roue doit tourner de façon à ce que le nombre total de dents utilisé soit un multiple de son nombre
+            de dents soit au minimum de $91$ dents.\\ Cela correspond à $(91\text{ dents})\div (13\text{ dents/tour}) = 7$ tours pour la roue n$^\circ$1.\\Cela correspond à $(91\text{ dents})\div (7\text{ dents/tour}) = 13$ tours pour la roue n$^\circ$2.
+	\item Pour un nombre de dents plus élevé, il est plus commode d'utiliser les décompositions en produit de facteurs premiers.\\\textbf {a.}  Décomposition de $86$ en produit de facteurs premiers :  $86 = 2\times43$.\\ Décomposition de $91$ en produit de facteurs premiers :  $91 = 7\times13$.\\Proposition de trois corrections valables pour la déduction : \\Proposition de correction 1 : \\D'après les calculs précédents, $ppcm(86,91)= 2\times7\times13\times43$.\\Donc $86$ et $91$ sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus petit multiple commun} \\ Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}.\\Proposition de correction 2 : \\D'après les calculs précédents, $pgcd(86,91)= 1 1$.\\Donc $86$ et $91$ sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus grand diviseur commun} \\ Soient deux nombres entiers a et b, lorsque le plus grang diviseur commun à $a$ et $b$ vaut $1$ \\ ( $pgcd(a,b)=1$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}.\\Proposition de correction 3 : \\D'après les calculs précédents, le seul diviseur commun à $86$ et $91$ vaut $1$.\\ Donc $86$ et $91$ sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir de l'intersection des diviseurs communs} \\ Soient deux nombres entiers a et b, lorsque $a$ et $b$ n'ont pas d'autre diviseur commun que $1$, on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}.\\\textbf {b.}  Pour retrouver la position initiale,
+          chaque roue doit tourner de façon à ce que le nombre total de dents utilisé soit un multiple de son nombre
+          de dents.\\
+          Soit, grâce aux décompositions précédentes, au minimum de $2\times7\times13\times43 = 7826$ dents.\\ Cela correspond à $(7\,826\text{ dents})\div (86\text{ dents/tour}) = 91$ tours pour la roue n$^\circ$1.\\ Cela correspond à $(7\,826\text{ dents})\div (91\text{ dents/tour}) = 86$ tours pour la roue n$^\circ$2.
+	\item Puisque la roue n$^\circ$2, qui a $20$ dents, fait $1$  tour , cela représente $20$ dents.\\La roue n$^\circ$1 doit donc aussi tourner de $20$ dents, ceci en $2$  tours .\\ On obtient donc $(20\text{ dents})\div (2\text{ tours }) = 10 \text{ dents/tour}.$\\La roue n$^\circ$1 a donc $10$ dents.
+	\item \textbf {a.}  Liste des premiers multiples de $8$ : \\$1\times8 = 8$ ; $2\times8 = 16$ ; $3\times8 = 24$ ; $4\times8 = 32$ ; $5\times8 = 40$ ; \\$6\times8 = 48$ ; $7\times8 = 56$ ; $8\times8 = 64$ ; $9\times8 = 72$ ; $10\times8 = 80$ ; \\$11\times8 = 88$ ; $12\times8 = 96$ ; $13\times8 = {\color[HTML]{f15929}\boldsymbol{104}}$ ; $14\times8 = 112$ ; $15\times8 = 120$ ; \\$\ldots$ \\ Liste des premiers multiples de $13$ : \\$1\times13 = 13$ ; $2\times13 = 26$ ; $3\times13 = 39$ ; $4\times13 = 52$ ; $5\times13 = 65$ ; \\$6\times13 = 78$ ; $7\times13 = 91$ ; $8\times13 = {\color[HTML]{f15929}\boldsymbol{104}}$ ; $9\times13 = 117$ ; $10\times13 = 130$ ; \\$\ldots$ \\$ppcm(8;13)=8\times13$ donc $8$ et $13$ sont des \textbf{nombres premiers entre eux} \footnote{\textbf{Définition à partir du plus petit multiple commun} \\ Soient deux nombres entiers a et b, lorsque le plus petit multiple commun à $a$ et $b$ vaut $a \times b$ \\( $ppcm(a,b)=a\times b$ ), on dit que $\textbf{les nombres a et b sont premiers entre eux}$.}.\\\textbf {b.}  Le plus petit multiple commun à $8$ et $13$ vaut donc $104$.\\
+            Il suffit donc que chaque roue tourne de $104$ dents pour faire un nombre entier de tours et ainsi revenir dans sa position initiale.\\
+            En effet, chaque roue doit tourner de façon à ce que le nombre total de dents utilisé soit un multiple de son nombre
+            de dents soit au minimum de $104$ dents.\\ Cela correspond à $(104\text{ dents})\div (8\text{ dents/tour}) = 13$ tours pour la roue n$^\circ$1.\\Cela correspond à $(104\text{ dents})\div (13\text{ dents/tour}) = 8$ tours pour la roue n$^\circ$2.
+\end{enumerate}
+\end{Solution}
+
+% @see : https://coopmaths.fr/alea?uuid=3ec5c&id=2N20-8&n=4&d=10&alea=uvkp&cd=1&cols=2
+\needspace{10\baselineskip}
+\begin{exercice}
+
+Soit $n$ un entier naturel.\begin{multicols}{2}
+\begin{enumerate}[itemsep=1em]
+	\item \begin{minipage}[t]{\linewidth} Que peut-on dire de la parité de $3n^{2}$ ? \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Que peut-on dire de la parité de $2n+8$ ? \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Que peut-on dire de la parité de 3$n$ ? \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Que peut-on dire de la parité de $4n^{2}$ ? \end{minipage}
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+\begin{Solution}\begin{multicols}{2}
+\begin{enumerate}[itemsep=1em]
+	\item \begin{minipage}[t]{\linewidth}  \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Comme $n$ est un entier naturel, $2n$ est un nombre pair\\
+                        8 est aussi un nombre pair.
+                        $2n+8$ est donc la somme de deux nombres pairs, il est donc pair \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} 3$n=2n+n$\\
+                            Comme $n$ est un entier naturel, $2 n$ est un nombre pair.\\
+                            Si $n$ est pair, $2n+n$ est la somme de deux nombres pairs, il sera donc pair. \\
+                            Si $n$ est impair, $2n+n$ est la somme d'un nombre pair et d'un impair, il sera donc impair. \\
+                            Au final, 3$n$ a donc la même parité que $n$. \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} $4n^{2}=2\times 2n^{2}$\\
+                        Comme $2n^{2}$ est un entier naturel, $2\times 2n^{2}$ est donc un nombre pair\\
+                         \end{minipage}
+\end{enumerate}
+\end{multicols}
+\end{Solution}
+
+% @see : https://coopmaths.fr/alea?uuid=c04cc&id=2N20-4&n=5&d=10&s=1&s2=false&s3=false&alea=3w1u&cd=1&cols=2
+\needspace{10\baselineskip}
+\begin{exercice}
+
+
+    \begin{bclogo}[couleurBarre=nombres,couleurBord=nombres,epBord=2,couleur=gray!10,logo=\bclampe,arrondi=0.1]{\bf Coup de pouce}
+      Penser aux critères de divisibilité.
+    \end{bclogo}
+    
+Justifier que les nombres suivants sont premiers ou pas.\begin{multicols}{2}
+\begin{enumerate}[itemsep=2em]
+	\item \begin{minipage}[t]{\linewidth} 849 \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} 525 \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} 53 \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} 342 \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} 123 \end{minipage}
+\end{enumerate}
+\end{multicols}
+\end{exercice}
+
+\begin{Solution}
+\begin{enumerate}[itemsep=1em]
+	\item \begin{minipage}[t]{\linewidth} Comme 8 + 4 + 9 = 21 est un multiple de 3 donc 849 aussi, il admet donc au moins trois diviseurs qui sont 1, 3 et lui-même, {\bfseries \color[HTML]{f15929}849 n'est donc pas premier}. \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Comme le chiffre des unités de 525 est un 5, alors 525 est divisible par 5, il admet donc au moins trois diviseurs qui sont 1, 5 et lui-même, {\bfseries \color[HTML]{f15929}525 n'est donc pas premier}. \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} En effectuant la division euclidienne de 53 par tous les nombres premiers inférieurs à $\sqrt{53}$, c'est-à-dire par les nombres 2, 3, 5 et 7, le reste n'est jamais nul, {\bfseries \color[HTML]{f15929}53 est donc un nombre premier}. \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Comme 342 est pair, il admet donc au moins trois diviseurs qui sont 1, 2 et lui-même, {\bfseries \color[HTML]{f15929}342 n'est donc pas premier}. \end{minipage}
+	\item \begin{minipage}[t]{\linewidth} Comme 1 + 2 + 3 = 6 est un multiple de 3 donc 123 aussi, il admet donc au moins trois diviseurs qui sont 1, 3 et lui-même, {\bfseries \color[HTML]{f15929}123 n'est donc pas premier}. \end{minipage}
+\end{enumerate}
+\end{Solution}
+
+\end{Maquette}
+\clearpage
+\end{document}
